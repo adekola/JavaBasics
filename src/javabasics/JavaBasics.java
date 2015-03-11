@@ -9,6 +9,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javabasics.Exercise6.AxeBehavior;
+import javabasics.Exercise6.ClubBehavior;
+import javabasics.Exercise6.King;
+import javabasics.Exercise6.KnifeBehavior;
+import javabasics.Exercise6.Knight;
+import javabasics.Exercise6.Queen;
+import javabasics.Exercise6.SwordBehavior;
+import javabasics.Exercise6.Troll;
+import javabasics.Exercise6.WeaponBehavior;
 import javabasics.exercise1.Car;
 import javabasics.exercise1.Customer;
 import javabasics.exercise1.Rental;
@@ -37,11 +46,13 @@ public class JavaBasics {
     public static void main(String[] args) throws ParseException {
         //testRental();
         
-       // testShapes();
+       //testShapes();
         
        // testZoo();
         
-        testRestaurants();
+        //testRestaurants();
+       
+       testStrategyPattern();
     }
 
     private static void testRestaurants(){
@@ -142,6 +153,31 @@ public class JavaBasics {
         Line li =  new Line(2, new Point[]{x, y});
         
         System.out.println(c.getShapeDetails());
+        
+    }
+    
+    private static void testStrategyPattern(){
+        King k = new King();
+        WeaponBehavior wb = new SwordBehavior();
+        k.setWeapon(wb);
+        
+        Queen q = new Queen();
+        wb = new AxeBehavior();
+        q.setWeapon(wb);
+        
+        Troll t = new Troll();
+        wb = new ClubBehavior();
+        t.setWeapon(wb);
+        
+        Knight kn = new Knight();
+        wb = new KnifeBehavior();
+        kn.setWeapon(wb);
+        
+        
+        System.out.println(k.fight());
+        System.out.println(q.fight());
+        System.out.println(t.fight());
+        System.out.println(kn.fight());
         
     }
 }

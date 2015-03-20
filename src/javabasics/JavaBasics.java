@@ -30,6 +30,11 @@ import javabasics.exercise3.Elephant;
 import javabasics.exercise3.Lion;
 import javabasics.exercise3.Zoo;
 import javabasics.exercise5.*;
+import javabasics.exercise7.BorderColor;
+import javabasics.exercise7.BorderFill;
+import javabasics.exercise7.Rectangle;
+import javabasics.exercise7.Shape;
+import javabasics.exercise7.ShapeDecorator;
 
 /**
  *
@@ -52,7 +57,9 @@ public class JavaBasics {
         
         //testRestaurants();
        
-       testStrategyPattern();
+       //testStrategyPattern();
+       
+       testDecoratorPattern();
     }
 
     private static void testRestaurants(){
@@ -180,4 +187,19 @@ public class JavaBasics {
         System.out.println(kn.fight());
         
     }
+
+    private static void testDecoratorPattern(){
+        
+        Shape rectangle = new Rectangle();
+        System.out.println(rectangle.Draw());
+        
+        BorderFill bf = new BorderFill(rectangle);
+        System.out.println(bf.setBorderFill("Dotted"));
+        
+        BorderColor bc =  new BorderColor(rectangle);
+        System.out.println(bc.setBorderColor("Blue"));
+        
+        
+    }
+
 }

@@ -21,8 +21,8 @@ import javabasics.Exercise6.WeaponBehavior;
 import javabasics.exercise1.Car;
 import javabasics.exercise1.Customer;
 import javabasics.exercise1.Rental;
-import javabasics.exercise2.Circle;
 import javabasics.exercise2.Line;
+import javabasics.exercise2.Circle;
 import javabasics.exercise2.Point;
 import javabasics.exercise2.Triangle;
 import javabasics.exercise3.Cage;
@@ -34,7 +34,11 @@ import javabasics.exercise7.BorderColor;
 import javabasics.exercise7.BorderFill;
 import javabasics.exercise7.Rectangle;
 import javabasics.exercise7.Shape;
-import javabasics.exercise7.ShapeDecorator;
+import javabasics.exercise11.*;
+import javabasics.exercise10.ComplexShape;
+
+
+
 
 /**
  *
@@ -59,9 +63,38 @@ public class JavaBasics {
        
        //testStrategyPattern();
        
-       testDecoratorPattern();
+       testFactoryMethod(); 
+        
+      // testCompositePattern(); 
+       //testDecoratorPattern();
+    }
+    
+    private static void testCompositePattern(){
+        javabasics.exercise10.Circle c = new javabasics.exercise10.Circle();
+        javabasics.exercise10.Rectangle r = new javabasics.exercise10.Rectangle();
+                
+        ComplexShape cs = new ComplexShape(new javabasics.exercise10.Shape[]{c, r});
+        
+        System.out.println(cs.Draw());
+        System.out.println(cs.getShapeDetails());
     }
 
+    private static void testFactoryMethod(){
+       Kennel ken = new Kennel();
+       Dog dog;
+       String[] dogBreeds = new String[]{"Akita", "Borenji", "BullDog", "GoldenRetriever", "GreyHound"};
+       
+       for(String s: dogBreeds){
+           dog = ken.createDog(s);
+           System.out.println(dog.bark());
+           System.out.println(dog.wagTail());
+           System.out.println(dog.run());
+           System.out.println("---------------------------");
+       }
+    }
+    
+    
+    
     private static void testRestaurants(){
         AfricanMenuItem isi = new AfricanMenuItem("Isiewu", "Goat meat", false, 15.95);
         AfricanMenuItem egu = new AfricanMenuItem("Egusi", "Water melon soup", true, 3.70);

@@ -29,7 +29,7 @@ public class User implements Subject {
 
     @Override
     public boolean removeObserver(Observer o) {
-         return followers.add(o);
+         return followers.remove(o);
     }
 
     @Override
